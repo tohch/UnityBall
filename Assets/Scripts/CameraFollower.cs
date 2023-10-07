@@ -4,7 +4,7 @@ public class CameraFollower : MonoBehaviour
 {
     public float Speed = 0.01f; // Speed of camera (Lerp)
     public Transform Camera; // Camera Object
-    public Transform Player; // Player Object
+    public Transform Player; // Player Object df
 
     private void Update()
     {
