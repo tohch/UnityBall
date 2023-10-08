@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public Rigidbody2D PlayerObject; // Player Object
-
+    
 
     private void Update()
     {
