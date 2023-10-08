@@ -13,16 +13,20 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AddForceToPlayer(new Vector2(0, jumpForce));
+        }
+    }
+    void FixedUpdate()
+    {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
         AddForceToPlayer(new Vector2 (horizontalInput * Force, verticalInput * Force));
         // move space sff
         // move add
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            AddForceToPlayer(new Vector2(0, jumpForce));
-        }
+
     }
     
     private void AddForceToPlayer(Vector2 force)
