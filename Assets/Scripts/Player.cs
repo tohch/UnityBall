@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public Rigidbody2D PlayerObject; // Player Object
+    public Health playerHealth;
     
 
     private void Update()
@@ -23,18 +24,27 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        AddForceToPlayer(new Vector2 (horizontalInput * Force, verticalInput * Force));
+        AddForceToPlayer(new Vector2(horizontalInput * Force, verticalInput * Force));
         // move space sff
         // move add
 
     }
-    
+
     private void AddForceToPlayer(Vector2 force)
     {
         if(force.y < 0) 
         { 
             force.y = 0;
         }
+        if(playerHealth.healthCount <= 5)
+        {
+            return;
+        }
         PlayerObject.AddForce(force); // Add force to player
+        if (force.x != 0 && force.y != 0)
+        {
+            playerHealth.DecreaseHealth();
+        }
+
     }
 }
