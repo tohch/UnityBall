@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public Image healthImage;
-    public int decreaseCount = 10;
+    public int decreaseCount;
     public int healthCount = 100;
     // Start is called before the first frame update
     void Start()

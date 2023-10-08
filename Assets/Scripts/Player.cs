@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            playerHealth.DecreaseHealth();
             AddForceToPlayer(new Vector2(0, jumpForce));
         }
     }
@@ -23,10 +24,14 @@ public class Player : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-
-        AddForceToPlayer(new Vector2(horizontalInput * Force, verticalInput * Force));
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            playerHealth.DecreaseHealth();
+            AddForceToPlayer(new Vector2(horizontalInput * Force, verticalInput * Force));
+        }
         // move space sff
         // move add
+
 
     }
 
@@ -36,15 +41,12 @@ public class Player : MonoBehaviour
         { 
             force.y = 0;
         }
-        if(playerHealth.healthCount <= 5)
+        if(playerHealth.healthCount <= 0)
         {
             return;
         }
         PlayerObject.AddForce(force); // Add force to player
-        if (force.x != 0 && force.y != 0)
-        {
-            playerHealth.DecreaseHealth();
-        }
+
 
     }
 }
